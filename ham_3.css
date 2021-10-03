@@ -1,0 +1,62 @@
+*, *::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bars-height: 3.4px;
+    --transition: all 0.5s ease-in-out;
+}
+
+#ham_3 {
+    width: 26px;
+    height: 17px;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px auto;
+}
+
+.mainBar {
+    width: 100%;
+    height: var(--bars-height);
+    position: relative;
+    background: var(--mainBar-backgroundColor);
+    transition: var(--transition);
+}
+
+.mainBar::before, .mainBar::after {
+    content: "";
+    width: 100%;
+    height: var(--bars-height);
+    left: 0;
+    top: 0;
+    position: absolute;
+    background-color: var(--pseudo-backgroundColor);
+    transition: var(--transition);
+}
+.mainBar::before {
+    transform: translateY(-7px);
+}
+.mainBar::after {
+    transform: translateY(7px);
+}
+
+/* start animation classes */
+
+#ham_3.resetPosition .mainBar::before, 
+#ham_3.resetPosition .mainBar::after {
+    transform: translateY(0px);
+} 
+
+#ham_3.rotate .mainBar {
+    transform: rotate(45deg);
+}
+
+#ham_3.rotateMore .mainBar::before, 
+#ham_3.rotateMore .mainBar::after {
+    transform: translateY(0px) rotate(90deg);
+} 
